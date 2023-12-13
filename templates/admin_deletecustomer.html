@@ -1,0 +1,68 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #e74c3c, #c0392b);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #e74c3c;
+      color: #fff;
+    }
+
+  </style>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<br><br><br><br><br><br>
+<!------ delete page for customer by admin  ---------->
+<form method="post">
+  {% csrf_token %}
+  <div class="container register-form">
+    <div class="form">
+      <div class="note">
+        <p>Delete Customer</p>
+      </div>
+      <div class="form-content">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="customerId">Customer ID:</label>
+              <p>{{ customer_id }}</p>
+            </div>
+            <!-- Add other customer details if needed -->
+          </div>
+
+        </div>
+        <button type="submit" class="btnSubmit">Delete</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endblock content %}

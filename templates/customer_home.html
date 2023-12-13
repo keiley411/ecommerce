@@ -1,0 +1,115 @@
+{% extends 'customer_base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  body {
+    background-color: #8c9eff;
+  }
+
+  .row {
+    display: flex;
+    {#flex-wrap: wrap;#}
+    justify-content: center;
+    align-content: center;
+
+  }
+
+  .column {
+    width: 30%;
+    margin: 15px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .info-inner {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .p-company {
+    background-color: #08050a;
+    color: yellow;
+    padding: 5px;
+    border-radius: 4px;
+  }
+
+  .a-size {
+    margin-top: 10px;
+    font-family: 'PT Sans', sans-serif;
+    color: #828282;
+  }
+
+  .cart {
+    display: block;
+    position: relative;
+    margin-top: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #252525;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .add-to-cart {
+    display: inline-block;
+    background-color: #08050a;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 4px;
+    margin-left: 5px;
+  }
+</style>
+
+{% if products %}
+  <h3 style="text-align: center; color: yellow;">{{ word }}</h3>
+  <div class="row">
+{#  <div class="col-sm-6">#}
+
+      {% for p in products %}
+      <div class="column col-sm-6">
+        <img class="img" src="{% static p.product_images %}" alt="{{ p.name }}">
+        <div class="info-inner">
+          <span class="p-company">{{ p.name }}</span>
+          <div class="a-size">{{ p.description }}</div>
+        </div>
+        <a class="cart" href="{% url 'add-to-cart' p.id %}">
+          <span class="price">Ksh. {{ p.price }}</span>
+          <span class="add-to-cart">Add in cart</span>
+        </a>
+      </div>
+
+      {% if forloop.counter|divisibleby:"3" %}
+        </div>
+        <div class="row">
+          <br><br><br><br><br>
+      {% endif %}
+    {% endfor %}
+      </div>
+  </div>
+{% else %}
+  <h3 style="text-align: center; color: yellow;">No Search Found</h3>
+{% endif %}
+
+<script>
+  {% if messages %}
+    {% for message in messages %}
+      alert('{{ message }}');
+    {% endfor %}
+  {% endif %}
+</script>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}

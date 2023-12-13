@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Online shopping</title>
+
+  <title>nelly</title>
+  <style media="screen">
+    .footer {
+      position: fixed;
+    }
+  </style>
+</head>
+
+<body style="background-color: #B3E5FC;">
+  {%if request.user.is_authenticated%}
+    {% include "customer_navbar.html" %}
+  {%else%}
+    {% include "navbar.html" %}
+  {%endif%}
+  <br><br><br>
+<h3 style="text-align:center;">“Getting things done on time.” </h3>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  {% include "footer.html" %}
+</body>
+
+
+
+
+
+</html>
